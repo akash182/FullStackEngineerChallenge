@@ -1,0 +1,34 @@
+<mat-toolbar  class="toolbar">
+    <mat-toolbar-row fxLayout="row">
+      
+          <h1 fxFlex class="font-effect-shadow-multiple">Performance Review Feedback</h1>
+          <span class="consume-space"></span>
+          <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+ 
+<div fxLayout="row"  fxLayout.lt-sm="column" fxLayoutGap="30px" fxLayoutAlign="center flex-start" class="central-block">
+  <div fxFlex="0 1 calc(25% -30px)" fxFlex.lt-md="100%" fxFlex.lt-sm="100%" class="mat-elevation-z8 curve-border">
+    <app-user-profile ></app-user-profile>
+  </div>
+ 
+  <div fxFlex="0 1 calc(50% -30px)" fxFlex.lt-md="100%" fxFlex.lt-sm="100%" class="mat-elevation-z8 curve-border">
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Pending Feedback">
+          <div fxLayout="column" fxLayoutGap="0px" fxLayoutAlign="flex-start">
+            <app-feedback *ngFor="let feedback of feedbacks; index as i; " [feedback]="feedback"></app-feedback>
+            </div>    
+        </mat-tab>
+        <mat-tab label="Sent Feedback" >
+            <div fxLayout="column" fxLayoutGap="0px" fxLayoutAlign="flex-start" class="mat-elevation-z8">
+              <app-feedback *ngFor="let feedback of feedbacks; index as i; " [feedback]="feedback"></app-feedback>
+              </div>
+        </mat-tab>
+      </mat-tab-group>
+  </div>
+
+
+  <div fxFlex="0 1 calc(25% - 30px)" fxFlex.lt-md="100%" fxFlex.lt-sm="100%" class="mat-elevation-z8 curve-border">
+   <label>Trending block</label>
+  </div>
+</div>
