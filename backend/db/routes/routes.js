@@ -16,7 +16,7 @@ router.get('/login', auth_controller.authenticate_user);
 router.post('/add_employee', employee_controller.add_employee);
 router.delete('/remove_employee', employee_controller.remove_employee);
 router.put('/update_employee', employee_controller.update_employee);
-router.get('/getall_employees', employee_controller.getall_employees);
+router.get('/getall_employees/:userid', employee_controller.getall_employees);
 
 //Authentication
 router.post('/authenticate_user', auth_controller.authenticate_user);

@@ -30,5 +30,9 @@ export class FeedbackDataService {
     });
   }
 
+  getall_employees(user : any){
+    return this.http.get(BASE_URL+'/getall_employees/'+user.userid);
+  }
+
   constructor(private http: HttpClient) { }
 }

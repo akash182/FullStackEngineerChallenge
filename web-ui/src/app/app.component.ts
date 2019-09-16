@@ -8,6 +8,7 @@ import { FeedbackDataService } from './services/feedback-data.service';
 export class AppComponent implements OnInit{
   title = 'web-ui';
   user;
+  role
   constructor(private fbDataService : FeedbackDataService){
 
   }

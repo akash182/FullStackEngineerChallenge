@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     FeedbackComponent,
     UserProfileComponent,
-    LoginComponent
+    LoginComponent,
+    ManageUserComponent
   ],
   imports: [
     BrowserAnimationsModule,

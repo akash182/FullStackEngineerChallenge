@@ -1,10 +1,20 @@
 .mat-toolbar.toolbar { 
     color: #fff !important;
-    background: #18181a !important;
+    background: #1976d2 !important;
     border-radius: 2px;
   }
   .toolbar.mat-toolbar h1{
     font-family: sans-serif !important;
     text-shadow: 4px 4px 4px #aaa !important;
     font-size: 4vh;
+  }
+  .toolbar_icons{
+      color : #fff;
+  }
+  .inner-link{
+     text-decoration : none; 
+    color: #fff;
+    font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    text-transform: uppercase;
+
   }

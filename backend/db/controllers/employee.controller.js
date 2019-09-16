@@ -7,12 +7,12 @@ exports.test = function (req, res) {
 
 
 exports.getall_employees = function(req,res){
-   Employee.find({ userid : {$ne : req.body.userid}},function(err,emplist){
+   Employee.find({ userid : {$ne : req.params.userid}},function(err,emplist){
        if(err){
            console.log(err);
            return err;
        }
-       res.send({'Employees': emplist});
+       res.send(emplist);
    })
 }
 
