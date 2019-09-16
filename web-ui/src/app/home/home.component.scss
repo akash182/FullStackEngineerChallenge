@@ -1,22 +1,11 @@
 .consume-space{
     flex : 1 1 auto;
   }
-  .mat-toolbar.toolbar { 
-    color: #fff !important;
-    background: #18181a !important;
-    border-radius: 2px;
-  }
-  .toolbar.mat-toolbar h1{
-    font-family: Rancho,sans-serif !important;
-    text-shadow: 4px 4px 4px #aaa !important;
-    font-size: 6vh;
-  }
+ 
  .feedback-card{
      margin : 20px;
  }
- .feedback-card:hover{
-     transform : translate(-4px, -4px);
- }
+ 
  .curve-border{
    border-radius: 5px;
    background: #fff;

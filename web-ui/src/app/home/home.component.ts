@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FeedbackDataService } from '../services/feedback-data.service';
 
 @Component({
@@ -8,18 +8,25 @@ import { FeedbackDataService } from '../services/feedback-data.service';
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
+
+  user: any;
   feedbacks:[]=[];
-  constructor(private feedbackDataService: FeedbackDataService) { }
+  constructor(private feedbackDataService: FeedbackDataService) { 
+    this.feedbackDataService.awaitData().subscribe((user)=>{
+      this.user=user;
+    });
+        console.log(this.user);
+
+  }
 
   ngOnInit() {
-    this.getAllFeedbacks('akash');
+    this.getAllFeedbacks(this.user);
   }
 
   getAllFeedbacks(user){
-    let feedbacksResponse=this.feedbackDataService.getAllFeedbacks(user) as [];
-    if(feedbacksResponse && feedbacksResponse.length > 0){
-      this.feedbacks.push(...feedbacksResponse);
-    }
+    this.feedbackDataService.getAllFeedbacks(user).subscribe((data)=>{
+      this.feedbacks=data as [];
+    })
 
   }
 

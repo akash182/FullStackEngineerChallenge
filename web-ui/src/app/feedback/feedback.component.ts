@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-feedback',
@@ -11,5 +12,17 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit() {
   }
+  ratingControl = new FormControl('');
+  detailFbControl = new FormControl('');
+   ratings=[{
+                label : 'Excellent',
+                value : '1'
+                },{
+                  label : 'Average',
+                value : '2'
+                },{
+                  label : 'Poor',
+                value : '3'
+                }]
 
 }

@@ -1,9 +1,7 @@
 <div class="user-profile">
-    <label class="mat-tab-label">User Block</label>
     <div fxLayout="column"  fxLayoutGap="10px" fxLayoutAlign="space-between stretch"> 
 
-      <button mat-stroked-button color="primary">Manage Employee</button>
-      <button mat-stroked-button color="primary">Manage Performance reviews</button>
-      <button mat-stroked-button color="primary">Assign Reviewer</button>
+      <label class="mat-tab-label fb-count-label"># Pending Feedbacks</label>
+      <label class="feedback-cnt">{{feedbacks.length}}</label>
     </div>
 </div>

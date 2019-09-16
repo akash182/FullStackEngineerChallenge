@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FeedbackComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,

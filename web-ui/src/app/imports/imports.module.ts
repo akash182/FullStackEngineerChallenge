@@ -21,7 +21,10 @@ import {MatInputModule,
         MatTabsModule,
         MatIconModule
 } from '@angular/material';
-const modules=[MatIconModule,FlexLayoutModule,MatTabsModule,MatSortModule,MatButtonModule,MatChipsModule,MatTooltipModule,MatDialogModule,MatDatepickerModule,MatSnackBarModule, MatInputModule,MatNativeDateModule , MatPaginatorModule,MatCheckboxModule,MatMenuModule,MatToolbarModule,MatSelectModule,MatCardModule,MatTableModule,MatAutocompleteModule, MatProgressSpinnerModule];
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+const modules=[HttpClientModule,FormsModule,ReactiveFormsModule,MatIconModule,FlexLayoutModule,MatTabsModule,MatSortModule,MatButtonModule,MatChipsModule,MatTooltipModule,MatDialogModule,MatDatepickerModule,MatSnackBarModule, MatInputModule,MatNativeDateModule , MatPaginatorModule,MatCheckboxModule,MatMenuModule,MatToolbarModule,MatSelectModule,MatCardModule,MatTableModule,MatAutocompleteModule, MatProgressSpinnerModule];
 @NgModule({
   imports: modules,
   exports: modules,
