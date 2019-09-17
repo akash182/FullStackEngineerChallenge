@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class FeedbackDataService {
   private user = new BehaviorSubject(undefined); 
   private loading = new BehaviorSubject(undefined);
+  private isUserLoggedIn = new BehaviorSubject(undefined);
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +19,10 @@ export class FeedbackDataService {
     getLoaderStatus(){
       return this.loading.asObservable();
     }
+
+    isLoggedIn(){
+       return this.isUserLoggedIn.asObservable();
+    }
     awaitData() {
         return this.getUser();
     }
@@ -26,6 +31,9 @@ export class FeedbackDataService {
     }
     updateLoaderStatus(loading){
       this.loading.next(loading);
+    }
+    updateLoginState(state){
+      this.isUserLoggedIn.next(state);
     }
 
   getAllFeedbacks(user: any) {

@@ -21,7 +21,7 @@ import { AddEmployeeModalComponent } from './manage-user/add-employee-modal/add-
     UserProfileComponent,
     LoginComponent,
     ManageUserComponent,
-    AddEmployeeModalComponent
+    AddEmployeeModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,

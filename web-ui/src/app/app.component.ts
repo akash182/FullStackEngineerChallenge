@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(){
+    this.fbDataService.updateLoginState(false);
     this.fbDataService.awaitData().subscribe(user =>{
       this.user=user;
     });

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
          }).subscribe((data)=>{
      this.user= data[0]; 
      this.fbservice.updateUser(this.user);
+     this.fbservice.updateLoginState(true);
      this.router.navigate(['home']);   
          flag=true;  
     },(err)=>{

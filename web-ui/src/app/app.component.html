@@ -3,7 +3,7 @@
         <mat-toolbar-row fxLayout="row" flexLayoutGap="10px">
               
               <div fxFlex="0 1 calc(40% - 10px)" >
-                    <h1 class="font-effect-shadow-multiple">Performance Review Feedback</h1>
+                    <a routerLink="/home" routerLinkActive="active"> <h1 class="font-effect-shadow-multiple" matTooltip="Home">Performance Review Feedback</h1></a>
               </div>
               <div fxFlex="0 1 calc(30% - 10px)"*ngIf="user?.role==='admin'">
                  <div fxLayout="row" flexLayoutGap="5px" fxLayoutAlign="flex-start center">
