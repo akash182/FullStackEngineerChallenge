@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
     this.feedbackDataService.awaitData().subscribe((user)=>{
       this.user=user;
     });
-        console.log(this.user);
 
   }
 
