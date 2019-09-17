@@ -5,13 +5,13 @@
               <div fxFlex="0 1 calc(40% - 10px)" >
                     <a routerLink="/home" routerLinkActive="active"> <h1 class="font-effect-shadow-multiple" matTooltip="Home">Performance Review Feedback</h1></a>
               </div>
-              <div fxFlex="0 1 calc(30% - 10px)"*ngIf="user?.role==='admin'">
-                 <div fxLayout="row" flexLayoutGap="5px" fxLayoutAlign="flex-start center">
+              <div fxFlex="0 1 calc(30% - 10px)">
+                 <div fxLayout="row" flexLayoutGap="5px" fxLayoutAlign="flex-start center" *ngIf="user?.role==='admin'">
                     <a routerLink="/manage_user" routerLinkActive="active"  fxFlex class="inner-link">Manage Users</a>
                  </div>
                </div>
-              <div fxFlex="0 1 calc(30% - 10px)" *ngIf="user && user?.name !==''">
-                 <div fxLayout="row" flexLayoutGap="5px" fxLayoutAlign="end center">
+              <div fxFlex="0 1 calc(30% - 10px)" >
+                 <div fxLayout="row" flexLayoutGap="5px" fxLayoutAlign="end center" *ngIf="user && user?.name !==''">
                  <mat-icon  aria-hidden="false" aria-label="user icon" class="toolbar_icons" fxFlex="0 0 calc(10% - 5px)">account_circle</mat-icon>
                  <label fxFlex="0 1 auto">{{user?.name}}</label>
                  </div>
