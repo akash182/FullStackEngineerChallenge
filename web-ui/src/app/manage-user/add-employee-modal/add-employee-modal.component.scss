@@ -1,0 +1,18 @@
+.mat-dailog-container{
+    border-radius : 5px;
+}
+.mat-dialog-title{
+    background-color : #2196F3 !important;
+    color : #E3F2FD !important;
+    padding : 15px !important;
+    display: flex;
+}
+.mat-dialog-content{
+    margin : 0px !important;
+    overflow-y: auto !important;
+    padding : 10px !important;
+    height: 35vh;
+}
+.full-width{
+    width: 100%;
+}

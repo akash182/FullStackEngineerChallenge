@@ -18,10 +18,16 @@ exports.getall_employees = function(req,res){
 
 //add employee to employees table and userid and pwwsord in auths table
 exports.add_employee=function(req, res){
+    let max_user;
+    Employee.find({ userid : {$ne : null}}).sort('-userid').exec(function(err , user){
+       max_user= user;
+       let max_id_number=parseInt(max_user[0].userid.slice(-3)) + 1;
+       let paddedNumber = (max_id_number+"").padStart(3,'0');
+    let user_id ="vc"+paddedNumber;
     let employee = new Employee({
         name : req.body.name,
         role : req.body.role || 'employee',
-        userid : req.body.userid
+        userid : user_id
     });
     employee.save(function(err){
         if (err) {
@@ -29,7 +35,7 @@ exports.add_employee=function(req, res){
             return err;
         }else{
             let authData = new Auth({
-                  userid : req.body.userid,
+                  userid : user_id,
                   password : req.body.password
               });
             authData.save(function(err){
@@ -37,10 +43,12 @@ exports.add_employee=function(req, res){
                     console.log(err);
                     return err;
                 }
-                res.send('Employee added successfully');
+                res.send({messgae : 'Employee added successfully'});
             }); 
         }
     });
+    });
+    
 }
     //Remove employee based on user id
   exports.remove_employee = function(req, res){

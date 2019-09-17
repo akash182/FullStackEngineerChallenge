@@ -9,7 +9,8 @@ const app = express();
 //MongoDb Connection
 // Set up mongoose connection
 const mongoose = require('mongoose');
-let dev_db_url = "mongodb+srv://root:root@cluster0-aivbk.mongodb.net/feedback_review_db?retryWrites=true&w=majority";
+//let dev_db_url = "mongodb+srv://root:root@cluster0-aivbk.mongodb.net/feedback_review_db?retryWrites=true&w=majority";
+let dev_db_url='mongodb://127.0.0.1:27017/feedback_review_db?retryWrites=true&w=majority';
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);

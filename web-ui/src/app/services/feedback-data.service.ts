@@ -7,8 +7,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class FeedbackDataService {
-  private user = new BehaviorSubject(undefined); ;
- private fetching: boolean;
+  private user = new BehaviorSubject(undefined); 
+
+
+  constructor(private http: HttpClient) { }
+
     private getUser() {
         return this.user.asObservable();
     }
@@ -34,5 +37,11 @@ export class FeedbackDataService {
     return this.http.get(BASE_URL+'/getall_employees/'+user.userid);
   }
 
-  constructor(private http: HttpClient) { }
+  add_employee(user : any){
+    return this.http.post(BASE_URL+'/add_employee',{
+       name : user.name,
+       role : user.role,
+       password : user.password
+    });
+  }
 }

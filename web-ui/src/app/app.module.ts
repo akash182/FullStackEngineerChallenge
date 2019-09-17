@@ -11,6 +11,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { AddEmployeeModalComponent } from './manage-user/add-employee-modal/add-employee-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
     FeedbackComponent,
     UserProfileComponent,
     LoginComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    AddEmployeeModalComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -28,6 +30,9 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
     AppRoutingModule
   ],
   providers: [],
+  entryComponents: [
+    AddEmployeeModalComponent,
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
