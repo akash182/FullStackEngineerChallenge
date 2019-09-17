@@ -14,7 +14,7 @@ router.get('/login', auth_controller.authenticate_user);
 
 //Employee Related operations
 router.post('/add_employee', employee_controller.add_employee);
-router.delete('/remove_employee', employee_controller.remove_employee);
+router.delete('/remove_employee/:userid', employee_controller.remove_employee);
 router.put('/update_employee', employee_controller.update_employee);
 router.get('/getall_employees/:userid', employee_controller.getall_employees);
 

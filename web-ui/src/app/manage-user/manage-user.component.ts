@@ -25,26 +25,27 @@ export class ManageUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fbService.getall_employees(this.user).subscribe((data)=>{
-          this.empList = data as [];
-          this.dataSource.data=this.empList;
-    });
+    this.refreshEmpList();
     this.dataSource.paginator = this.paginator;
   }
 
+  refreshEmpList(){
+    this.fbService.updateLoaderStatus(true);
+    this.fbService.getall_employees(this.user).subscribe((data)=>{
+      this.empList = data as [];
+      this.dataSource.data=this.empList;
+      this.fbService.updateLoaderStatus(false);
+    });
+  }
   addEmployee(){
     const dialogRef = this.dialog.open(AddEmployeeModalComponent, {
       width: '30vw',
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.fbService.updateLoaderStatus(true);
       this.fbService.add_employee(result).subscribe((d)=>{
-           this.fbService.updateLoaderStatus(true);
-            this.fbService.getall_employees(this.user).subscribe((data)=>{
-              this.empList = data as [];
-              this.dataSource.data=this.empList;
-              this.fbService.updateLoaderStatus(false);
-             });
+            this.refreshEmpList();
             this._snackBar.open("Employee added successfully!", '',{
               duration: 3 * 1000,
             });
@@ -52,4 +53,17 @@ export class ManageUserComponent implements OnInit {
     });
   }
   
+
+  //Remove employee
+  removeEmployee (user){
+    this.fbService.updateLoaderStatus(true);
+    this.fbService.remove_employee(user).subscribe((res)=>{
+      if(res['message']=='Success'){
+        this.refreshEmpList();
+        this._snackBar.open('Employee Deleted Successfully!','',{ duration : 3 * 1000});
+      }else{
+        this._snackBar.open('Error!','',{ duration : 3 * 1000});
+      }
+    })
+  }
 }

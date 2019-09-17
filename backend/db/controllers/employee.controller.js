@@ -53,12 +53,18 @@ exports.add_employee=function(req, res){
     //Remove employee based on user id
   exports.remove_employee = function(req, res){
       
-      Employee.deleteOne({ name : req.body.userid},function(err){
+      Employee.deleteOne({ userid : req.params.userid},function(err){
             if(err){
                 console.log(err);
                 return err;
             }
-            res.send(req.body.name + " deleted succesfully!");
+       Auth.deleteOne({ userid : req.params.userid},function(err){
+        if(err){
+            console.log(err);
+            return err;
+        }
+        res.send({message : 'Success'});
+       })  
       });
   }
 

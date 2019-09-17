@@ -50,4 +50,8 @@ export class FeedbackDataService {
        password : user.password
     });
   }
+
+  remove_employee(user : any){
+    return this.http.delete(BASE_URL+'/remove_employee/'+user.userid);
+  }
 }
