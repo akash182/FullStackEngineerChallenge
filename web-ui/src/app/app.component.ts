@@ -8,7 +8,8 @@ import { FeedbackDataService } from './services/feedback-data.service';
 export class AppComponent implements OnInit{
   title = 'web-ui';
   user;
-  role
+  role;
+  loading=false;
   constructor(private fbDataService : FeedbackDataService){
 
   }
@@ -16,5 +17,8 @@ export class AppComponent implements OnInit{
     this.fbDataService.awaitData().subscribe(user =>{
       this.user=user;
     });
+    this.fbDataService.getLoaderStatus().subscribe((loading) =>{
+      this.loading=loading;
+    })
   }
 }

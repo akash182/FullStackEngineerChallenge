@@ -39,9 +39,15 @@ export class ManageUserComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.fbService.add_employee(result).subscribe((d)=>{
-        this._snackBar.open("Employee added successfully!", '',{
-          duration: 3 * 1000,
-        });
+           this.fbService.updateLoaderStatus(true);
+            this.fbService.getall_employees(this.user).subscribe((data)=>{
+              this.empList = data as [];
+              this.dataSource.data=this.empList;
+              this.fbService.updateLoaderStatus(false);
+             });
+            this._snackBar.open("Employee added successfully!", '',{
+              duration: 3 * 1000,
+            });
       });
     });
   }

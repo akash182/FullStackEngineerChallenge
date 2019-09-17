@@ -19,6 +19,8 @@
               </div>
         </mat-toolbar-row>
       </mat-toolbar>
-     
+      <div class="spinner-wrapper" *ngIf="loading">
+                  <mat-spinner class="loader-margin"></mat-spinner>
+       </div> 
 
 <router-outlet></router-outlet>

@@ -8,18 +8,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FeedbackDataService {
   private user = new BehaviorSubject(undefined); 
-
+  private loading = new BehaviorSubject(undefined);
 
   constructor(private http: HttpClient) { }
 
     private getUser() {
         return this.user.asObservable();
     }
+    getLoaderStatus(){
+      return this.loading.asObservable();
+    }
     awaitData() {
         return this.getUser();
     }
     updateUser(user) {
             this.user.next(user);
+    }
+    updateLoaderStatus(loading){
+      this.loading.next(loading);
     }
 
   getAllFeedbacks(user: any) {
