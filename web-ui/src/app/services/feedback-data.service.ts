@@ -54,4 +54,8 @@ export class FeedbackDataService {
   remove_employee(user : any){
     return this.http.delete(BASE_URL+'/remove_employee/'+user.userid);
   }
+
+  update_employee(user : any){
+    return this.http.put(BASE_URL+'/update_employee', user);
+  }
 }

@@ -70,12 +70,13 @@ exports.add_employee=function(req, res){
 
   //Update emloyee information
   exports.update_employee = function (req, res) {
-    Employee.findOneAndUpdate({userid : req.body.userid}, {$set :  req.body}, function (err, employee) {
+      console.log(req.body);
+    Employee.findOneAndUpdate({userid : req.body.userid}, {$set :  {name : req.body.name , role : req.body.role}}, function (err, employee) {
         console.log(employee);
         if (err) {
             console.log(err);
             return err;
         }
-        res.send(employee.name + ' Details udpated.');
+        res.send({message : 'Success'});
     });
-};
+  };
