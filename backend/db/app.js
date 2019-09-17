@@ -1,9 +1,9 @@
 //app.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes/routes'); // Imports routes for the products
+const routes = require('./routes/routes'); // Imports routes
 const app = express();
-
+const testdata = require('./testdata/data');
 
 
 //MongoDb Connection
@@ -19,6 +19,19 @@ mongoose.connect(dev_db_url);
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+//Inserting test data
+let authCollection=db.collection('auth');
+testdata.authData.forEach((record)=>{
+   authCollection.insertOne(record);
+});
+
+
+let empCollection=db.collection('employees');
+testdata.employeeData.forEach((record)=>{
+    empCollection.insertOne(record);
+})
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
