@@ -76,15 +76,17 @@ export class ManageUserComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.fbService.updateLoaderStatus(true);
-      this.fbService.update_employee({ userid : user.userid, name : result.name , role: result.role}).subscribe((res)=>{
-        if(res['message']=='Success'){
-          this.refreshEmpList();
-          this._snackBar.open('Employee Updated Successfully!','',{ duration : 3 * 1000});
-        }else{
-          this._snackBar.open('Error!','',{ duration : 3 * 1000});
-        }
-      });
+      if(result){
+        this.fbService.updateLoaderStatus(true);
+        this.fbService.update_employee({ userid : user.userid, name : result.name , role: result.role}).subscribe((res)=>{
+          if(res['message']=='Success'){
+            this.refreshEmpList();
+            this._snackBar.open('Employee Updated Successfully!','',{ duration : 3 * 1000});
+          }else{
+            this._snackBar.open('Error!','',{ duration : 3 * 1000});
+          }
+        });
+      }
     });
   }
 

@@ -27,10 +27,10 @@
             <td mat-cell *matCellDef="let element"> 
               <div fxLayout="row wrap" fxLayoutAlign="flex-end center" fxlayoutGap="3px">
                   <button mat-icon-button color="primary" (click)="updateEmployee(element)" fxFlex="0 0 calc(50%- 3px)">
-                      <mat-icon aria-hidden="false" aria-label="edit icon">edit</mat-icon>
+                      <mat-icon aria-hidden="false" aria-label="edit icon" matTooltip="Update Employee">edit</mat-icon>
                     </button> 
                   <button mat-icon-button color="primary" (click)="removeEmployee(element)" fxFlex="0 0 calc(50%- 3px)">
-                    <mat-icon aria-hidden="false" aria-label="delete icon">delete</mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="delete icon" matTooltip="Delete Employee">delete</mat-icon>
                   </button>
               </div>
             </td>
