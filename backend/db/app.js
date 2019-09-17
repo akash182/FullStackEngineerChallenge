@@ -21,7 +21,7 @@ let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //Inserting test data
-let authCollection=db.collection('auth');
+let authCollection=db.collection('auths');
 testdata.authData.forEach((record)=>{
    authCollection.insertOne(record);
 });
@@ -30,8 +30,12 @@ testdata.authData.forEach((record)=>{
 let empCollection=db.collection('employees');
 testdata.employeeData.forEach((record)=>{
     empCollection.insertOne(record);
-})
+});
 
+let perfViewCollection=db.collection('perfviews');
+testdata.perfviewData.forEach((record)=>{
+    perfViewCollection.insertOne(record);
+})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

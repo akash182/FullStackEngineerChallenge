@@ -22,3 +22,6 @@ exports.authData = [
 {"userid":"vc009","password":"vc009"},
 {"userid":"vc010","password":"vc010"},
 {"userid":"vc011","password":"vc011"}];
+
+exports.perfviewData=[{"reviewer":["vc001","vc003"],"userid":"vc004"},
+{"reviewer":["vc001","vc003"],"userid":"vc002"}];
