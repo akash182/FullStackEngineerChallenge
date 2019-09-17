@@ -1,13 +1,14 @@
 const Perfview = require('../models/perfview.model');
 const Feedback = require('../models/feedback.model');
+const Employee = require('../models/employee.model');
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
     res.send('Greetings from the Feedback controller!');
 };
 
 //add new performance review
-exports.add_perfview = function(re, req){
-    let perfview = new Feedback({
+exports.add_perfview = function(req, res){
+    let perfview = new Perfview({
         userid : req.body.userid,
         reviewer : req.body.reviewer
     });
@@ -16,7 +17,7 @@ exports.add_perfview = function(re, req){
            console.log(err);
            return err
        }
-       res.send("Performance review created successfully");
+       res.send({message : "Performance review created successfully"});
     });
 }
   //Update performance review information
@@ -51,6 +52,7 @@ exports.add_perfview = function(re, req){
                      return err;
                  }else{
                      if(emplist && emplist.length > 0){
+                         let counter=0;
                          emplist.forEach((emp)=>{
                              Feedback.find({ userid : emp.userid, reviewer : req.body.userid },function(err, fblist){
                                      if(err){
@@ -58,11 +60,21 @@ exports.add_perfview = function(re, req){
                                          return err;
                                      }
                                      if(fblist && fblist.length ==0){
-                                            pending_fbs.push(emp);
-                                     }
-                                     res.send(pending_fbs);
+                                        Employee.findOne({ userid : emp.userid},function(err,resEmp){
+                                            if(err){
+                                                return err;
+                                            }else{
+                                                pending_fbs.push(resEmp);         
+                                                counter++;
 
-                             })
+                                                if(counter==emplist.length){
+                                                    res.send(pending_fbs);
+                                                }
+                                            }
+                                        })
+                                     }
+
+                             });
                          })
                      } 
                  }
