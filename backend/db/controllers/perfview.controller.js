@@ -52,30 +52,25 @@ exports.add_perfview = function(req, res){
                      return err;
                  }else{
                      if(emplist && emplist.length > 0){
-                         let counter=0;
-                         emplist.forEach((emp)=>{
-                             Feedback.find({ userid : emp.userid, reviewer : req.body.userid },function(err, fblist){
+                         let empIds= emplist.map((currentValue)=>{
+                                return currentValue.userid;
+                         });
+                             Feedback.find({ userid : {$in : empIds}, reviewer : req.body.userid },function(err, fblist){
                                      if(err){
                                          console.log(err);
                                          return err;
                                      }
                                      if(fblist && fblist.length ==0){
-                                        Employee.findOne({ userid : emp.userid},function(err,resEmp){
+                                        Employee.find({ userid : {$in : empIds}},function(err,resEmp){
                                             if(err){
                                                 return err;
                                             }else{
-                                                pending_fbs.push(resEmp);         
-                                                counter++;
-
-                                                if(counter==emplist.length){
-                                                    res.send(pending_fbs);
-                                                }
+                                                res.send(resEmp);
                                             }
                                         })
                                      }
 
                              });
-                         })
                      } 
                  }
          });
