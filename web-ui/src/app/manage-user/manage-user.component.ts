@@ -43,6 +43,7 @@ export class ManageUserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result && result.name !==''){
       this.fbService.updateLoaderStatus(true);
       this.fbService.add_employee(result).subscribe((d)=>{
             this.refreshEmpList();
@@ -50,6 +51,7 @@ export class ManageUserComponent implements OnInit {
               duration: 3 * 1000,
             });
       });
+     }
     });
   }
   
@@ -76,7 +78,7 @@ export class ManageUserComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if(result && result.name !==''){
         this.fbService.updateLoaderStatus(true);
         this.fbService.update_employee({ userid : user.userid, name : result.name , role: result.role}).subscribe((res)=>{
           if(res['message']=='Success'){
