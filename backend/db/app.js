@@ -20,7 +20,19 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+
+//Remove data if already exist
+for(let collection in db.collections){
+    if(collection == 'auths' || collection == 'employees' || collection == 'perfviews'){
+      db.collection(collection).deleteMany({},(err)=>{
+        if(err){
+           // console.log(err);
+           }
+        });
+ }
+}
 //Inserting test data
+
 let authCollection=db.collection('auths');
 testdata.authData.forEach((record)=>{
    authCollection.insertOne(record);
@@ -35,7 +47,7 @@ testdata.employeeData.forEach((record)=>{
 let perfViewCollection=db.collection('perfviews');
 testdata.perfviewData.forEach((record)=>{
     perfViewCollection.insertOne(record);
-})
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
