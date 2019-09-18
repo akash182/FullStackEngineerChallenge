@@ -12,6 +12,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { AddEmployeeModalComponent } from './manage-user/add-employee-modal/add-employee-modal.component';
+import { ManageReviewsComponent } from './manage-reviews/manage-reviews.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddEmployeeModalComponent } from './manage-user/add-employee-modal/add-
     LoginComponent,
     ManageUserComponent,
     AddEmployeeModalComponent,
+    ManageReviewsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
